@@ -6,7 +6,9 @@ This file is the handoff note for future coding sessions. Keep it current whenev
 
 ## Current State
 
-- Astrofy is installed in this repo and a baseline build passes after removing the incompatible sitemap integration from `astro.config.mjs`.
+- Astrofy is installed and customized for Ahmad Saladin's v0 personal website.
+- All required v0 routes exist and `npm run build` succeeds.
+- The site is static and ready for Cloudflare Pages using build command `npm run build` and output directory `dist`.
 - Source brief exists in `brief.md`.
 - Agent instructions exist in `AGENTS.md`.
 - Reusable design guidance exists in `DESIGN.md`.
@@ -30,6 +32,7 @@ This file is the handoff note for future coding sessions. Keep it current whenev
 - Do not build real backend demos, contact form backend, analytics, CMS, architecture diagrams, or custom design system work in v0.
 - Main site should be deployable to Cloudflare Pages and independent from future VPS demo/API uptime.
 - Implement v0 case studies and PoCs as static Astro pages instead of adding new content collections. This is the smallest safe fit for placeholder pages and keeps the Astrofy blog collection intact for later.
+- Actual email, GitHub, LinkedIn, and CV PDF are not confirmed; v0 marks them as pending instead of linking to fake or broken destinations.
 
 ## Astrofy Structure Audit
 
@@ -107,14 +110,17 @@ Open to remote roles, contractor work, freelance projects, part-time engagements
 
 ## Current Next Steps
 
-1. Implement global configuration and v0 navigation.
-2. Remove or disable Store routes and content from the v0 user journey.
-3. Build pages according to `IMPLEMENTATION_PLAN.md` and `DESIGN.md`.
+1. Provide actual email, GitHub, and LinkedIn URLs and wire them into the UI.
+2. Add the final CV PDF when available.
+3. Optionally add real case study content, screenshots, and frontend-only PoC walkthroughs in later versions.
 
 ## Verification Commands
 
 - `npm run dev -- --host 127.0.0.1`: starts Astro dev server.
-- `npm run build`: passes after disabling the incompatible Astrofy sitemap integration.
+- `npm run build`: passes and generates all required v0 routes in `dist/`.
+- Required route file check passed for `/`, `/case-studies`, all case study detail pages, `/pocs`, all PoC detail pages, `/about`, `/contact`, and `/cv`.
+- No lint or format scripts are currently defined in `package.json`.
+- Build currently logs Astro warnings because Blog support is retained while the Blog collection has no posts. The build still completes successfully.
 
 ## Known Blockers / Unknowns
 
@@ -122,6 +128,13 @@ Open to remote roles, contractor work, freelance projects, part-time engagements
 - Actual LinkedIn URL is not confirmed in repo files yet.
 - Contact email is not confirmed in repo files yet.
 - Final CV PDF is not available yet; use "CV PDF coming soon" unless provided.
+
+## Deployment Notes
+
+- Cloudflare Pages build command: `npm run build`.
+- Cloudflare Pages output directory: `dist`.
+- No v0 environment variables are required.
+- No v0 feature depends on VPS uptime, hosted models, queues, webhooks, or backend demo APIs.
 
 ## Handoff Rule
 

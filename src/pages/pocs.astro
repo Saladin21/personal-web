@@ -1,0 +1,61 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const pocs = [
+  {
+    title: "RAG Document Assistant Demo",
+    demonstrates: "A document assistant flow with sample document selection, retrieved context, source-grounded answer, and productionization notes.",
+    usefulFor: "Startups, internal teams, and agencies building document Q&A, knowledge base assistants, or retrieval-backed LLM apps.",
+    href: "/pocs/rag-document-assistant",
+    tags: ["RAG", "Vector Search", "Qdrant", "LLM", "FastAPI"],
+  },
+  {
+    title: "Computer Vision Segmentation Demo",
+    demonstrates: "A visual walkthrough of image input, segmentation mask, overlay result, post-processing, and deployment considerations.",
+    usefulFor: "Teams building medical, beauty, industrial, or inspection-related image analysis workflows.",
+    href: "/pocs/computer-vision-segmentation",
+    tags: ["Computer Vision", "OpenCV", "PyTorch", "Segmentation", "ONNX"],
+  },
+  {
+    title: "Async AI Inference API Demo",
+    demonstrates: "A simulated long-running AI inference workflow: submit job, queue, process, store result, check status, and receive callback.",
+    usefulFor: "Teams building model-serving APIs, image processing systems, batch inference, or AI backends.",
+    href: "/pocs/async-ai-inference-api",
+    tags: ["FastAPI", "Queue", "Worker", "Redis", "RabbitMQ", "Storage", "Callback"],
+  },
+];
+---
+
+<BaseLayout
+  title="PoCs - Ahmad Saladin"
+  description="Placeholder AI proof-of-concept walkthroughs for RAG, computer vision, and async inference API patterns."
+  sideBarActiveItemID="pocs"
+>
+  <section class="max-w-3xl">
+    <p class="text-sm font-semibold uppercase tracking-[0.22em] text-primary">PoCs</p>
+    <h1 class="mt-3 text-4xl md:text-5xl font-bold">AI system demos and walkthroughs</h1>
+    <p class="mt-4 text-lg opacity-80">PoCs are small demos and walkthroughs that show how I would approach common AI system patterns. Some start as guided frontend-only demos with sample data. Real backend demos may later be hosted separately on demo subdomains.</p>
+    <p class="mt-3 opacity-80">For v0, these are placeholders or static walkthroughs, not live backend demos.</p>
+  </section>
+
+  <section class="mt-10 grid gap-4">
+    {pocs.map((poc) => (
+      <article class="card bg-base-200 shadow-sm">
+        <div class="card-body">
+          <div class="flex flex-wrap items-start justify-between gap-3">
+            <h2 class="card-title">{poc.title}</h2>
+            <span class="badge badge-primary badge-outline">Guided demo planned</span>
+          </div>
+          <p><strong>What it demonstrates:</strong> {poc.demonstrates}</p>
+          <p><strong>Useful for:</strong> {poc.usefulFor}</p>
+          <div class="flex flex-wrap gap-2">
+            {poc.tags.map((tag) => <span class="badge badge-outline">{tag}</span>)}
+          </div>
+          <div class="card-actions justify-end">
+            <a class="btn btn-outline" href={poc.href}>View PoC page</a>
+          </div>
+        </div>
+      </article>
+    ))}
+  </section>
+</BaseLayout>

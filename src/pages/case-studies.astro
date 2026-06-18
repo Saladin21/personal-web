@@ -1,0 +1,56 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const caseStudies = [
+  {
+    title: "LLM/RAG Assistant with Tool Calling",
+    summary: "AI assistant workflow with retrieval, tool calling, structured information collection, and backend integration.",
+    href: "/case-studies/llm-rag-assistant",
+    tags: ["LLM", "RAG", "Qdrant", "FastAPI", "LangGraph", "Tool Calling"],
+  },
+  {
+    title: "Computer Vision Segmentation Pipeline",
+    summary: "Production-oriented image segmentation workflow with preprocessing, sliding-window inference, post-processing, API/mobile deployment considerations, and visualization outputs.",
+    href: "/case-studies/computer-vision-segmentation",
+    tags: ["Computer Vision", "PyTorch", "OpenCV", "Segmentation", "ONNX", "API Deployment"],
+  },
+  {
+    title: "Async AI Inference Backend",
+    summary: "Backend architecture for long-running AI jobs using API endpoints, queue workers, object storage, status tracking, and callback/webhook delivery.",
+    href: "/case-studies/async-ai-inference-backend",
+    tags: ["FastAPI", "Flask", "Redis", "RabbitMQ", "Docker", "AWS", "GCP", "S3/GCS"],
+  },
+];
+---
+
+<BaseLayout
+  title="Case Studies - Ahmad Saladin"
+  description="Placeholder case studies for Ahmad Saladin's LLM/RAG, computer vision, and async AI backend work."
+  sideBarActiveItemID="case-studies"
+>
+  <section class="max-w-3xl">
+    <p class="text-sm font-semibold uppercase tracking-[0.22em] text-primary">Case Studies</p>
+    <h1 class="mt-3 text-4xl md:text-5xl font-bold">Production AI system case studies</h1>
+    <p class="mt-4 text-lg opacity-80">These v0 pages are placeholders for future writeups. They outline the kind of problems, architectures, and implementation details each full case study will cover.</p>
+  </section>
+
+  <section class="mt-10 grid gap-4">
+    {caseStudies.map((study) => (
+      <article class="card bg-base-200 shadow-sm">
+        <div class="card-body">
+          <div class="flex flex-wrap items-start justify-between gap-3">
+            <h2 class="card-title">{study.title}</h2>
+            <span class="badge badge-primary badge-outline">Case study coming soon</span>
+          </div>
+          <p>{study.summary}</p>
+          <div class="flex flex-wrap gap-2">
+            {study.tags.map((tag) => <span class="badge badge-outline">{tag}</span>)}
+          </div>
+          <div class="card-actions justify-end">
+            <a class="btn btn-outline" href={study.href}>View placeholder</a>
+          </div>
+        </div>
+      </article>
+    ))}
+  </section>
+</BaseLayout>

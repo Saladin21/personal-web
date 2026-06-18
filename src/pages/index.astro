@@ -1,78 +1,248 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import HorizontalCard from "../components/HorizontalCard.astro";
-import { getCollection } from "astro:content";
-import createSlug from "../lib/createSlug"
 
-const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const title = "Ahmad Saladin - Remote AI/ML Engineer";
+const description = "Remote AI/ML engineer based in Indonesia, building production LLM/RAG apps, computer vision pipelines, FastAPI model APIs, and AI automation workflows.";
 
-const last_posts = posts.slice(0, 3);
+const capabilities = [
+  {
+    title: "LLM/RAG Applications",
+    description: "Document assistants, retrieval pipelines, vector search, tool-calling workflows, structured data collection, and AI app backends.",
+    tags: ["Python", "FastAPI", "Qdrant", "LangGraph", "RAG", "Tool Calling"],
+  },
+  {
+    title: "Computer Vision Systems",
+    description: "Image processing, segmentation, detection, OpenCV/PyTorch pipelines, sliding-window inference, post-processing, and production inference APIs.",
+    tags: ["PyTorch", "OpenCV", "ONNX", "Segmentation", "Detection", "Sliding-Window Inference"],
+  },
+  {
+    title: "AI Backend & Model Serving",
+    description: "FastAPI/Flask model APIs, async job queues, Redis/RabbitMQ workers, object storage flows, callback/webhook patterns, and cloud deployment.",
+    tags: ["FastAPI", "Flask", "Redis", "RabbitMQ", "Docker", "AWS", "GCP", "S3/GCS"],
+  },
+  {
+    title: "n8n + AI Automation",
+    description: "Workflow automations combining APIs, LLMs, webhooks, human approval, messaging integrations, and business process automation.",
+    tags: ["n8n", "Webhooks", "LLMs", "Gmail", "Telegram", "Postgres", "Automation"],
+  },
+];
+
+const caseStudies = [
+  {
+    title: "LLM/RAG Assistant with Tool Calling",
+    description: "AI assistant workflow with retrieval, tool calling, structured information collection, and backend integration.",
+    href: "/case-studies/llm-rag-assistant",
+    tags: ["LLM", "RAG", "Qdrant", "FastAPI", "LangGraph", "Tool Calling"],
+  },
+  {
+    title: "Computer Vision Segmentation Pipeline",
+    description: "Production-oriented image segmentation workflow with preprocessing, sliding-window inference, post-processing, API/mobile deployment considerations, and visualization outputs.",
+    href: "/case-studies/computer-vision-segmentation",
+    tags: ["Computer Vision", "PyTorch", "OpenCV", "Segmentation", "ONNX", "API Deployment"],
+  },
+  {
+    title: "Async AI Inference Backend",
+    description: "Backend architecture for long-running AI jobs using API endpoints, queue workers, object storage, status tracking, and callback/webhook delivery.",
+    href: "/case-studies/async-ai-inference-backend",
+    tags: ["FastAPI", "Flask", "Redis", "RabbitMQ", "Docker", "AWS", "GCP", "S3/GCS"],
+  },
+];
+
+const pocs = [
+  {
+    title: "RAG Document Assistant Demo",
+    description: "A document assistant flow with sample document selection, retrieved context, source-grounded answer, and productionization notes.",
+    href: "/pocs/rag-document-assistant",
+    tags: ["RAG", "Vector Search", "Qdrant", "LLM", "FastAPI"],
+  },
+  {
+    title: "Computer Vision Segmentation Demo",
+    description: "A visual walkthrough of image input, segmentation mask, overlay result, post-processing, and deployment considerations.",
+    href: "/pocs/computer-vision-segmentation",
+    tags: ["Computer Vision", "OpenCV", "PyTorch", "Segmentation", "ONNX"],
+  },
+  {
+    title: "Async AI Inference API Demo",
+    description: "A simulated long-running AI inference workflow: submit job, queue, process, store result, check status, and receive callback.",
+    href: "/pocs/async-ai-inference-api",
+    tags: ["FastAPI", "Queue", "Worker", "Redis", "RabbitMQ", "Storage", "Callback"],
+  },
+];
+
+const stackGroups = [
+  ["AI / ML", ["PyTorch", "scikit-learn", "ONNX", "OpenCV", "embeddings", "segmentation", "detection"]],
+  ["LLM / Agents", ["RAG", "Qdrant", "LangGraph", "tool calling", "LLM APIs", "prompt workflows"]],
+  ["Backend", ["Python", "FastAPI", "Flask", "Redis", "RabbitMQ", "REST APIs", "webhooks"]],
+  ["Cloud / Infra", ["Docker", "AWS", "GCP", "S3/GCS", "Cloudflare Pages", "VPS deployment"]],
+  ["Automation", ["n8n", "Telegram", "Gmail", "Postgres", "workflow automation"]],
+];
 ---
 
-<BaseLayout sideBarActiveItemID="home">
-  <div class="pb-12 mt-5">
-    <div class="text-xl py-1">Hey there 👋</div>
-    <div class="text-5xl font-bold">I'm Manuel Ernesto</div>
-    <div class="text-3xl py-3 font-bold">Software Engineer and Entrepreneur</div>
-    <div class="py-2">
-      <text class="text-lg">
-        This is <b>Astrofy</b> a free and open-source template for your Personal Portfolio Website built with Astro and TailwindCSS.
-        Create in minutes a website with Blog, CV, Project Section, Store and RSS Feed. I hope you find
-        it useful!
-      </text>
+<BaseLayout title={title} description={description} includeSidebar={true}>
+  <section class="pb-14 mt-4">
+    <p class="text-sm font-semibold uppercase tracking-[0.22em] text-primary">Ahmad Saladin</p>
+    <h1 class="mt-3 text-4xl md:text-6xl font-bold leading-tight">Remote AI/ML Engineer for production AI systems</h1>
+    <p class="mt-5 text-lg md:text-xl leading-relaxed max-w-3xl">
+      I help teams build LLM/RAG apps, computer vision pipelines, FastAPI model APIs, vector search systems, n8n automations, and cloud inference backends.
+    </p>
+    <div class="mt-5 grid gap-2 text-base opacity-80">
+      <p>Based in Indonesia, UTC+7. Available for APAC/Europe overlap and async global teams.</p>
+      <p>Open to remote roles, contractor work, freelance projects, part-time engagements, and project-based AI/backend implementation.</p>
     </div>
-    <div class="mt-8">
-      <a class="btn" href="https://twitter.com/manuelernestog" target="_blank"> Let's connect!</a>
-      <a href="https://github.com/manuelernestog/astrofy" target="_blank" class="btn btn-outline ml-5">
-        Get This template
-      </a>
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a class="btn btn-primary" href="/case-studies">View Case Studies</a>
+      <a class="btn btn-outline" href="/pocs">View PoCs</a>
+      <a class="btn btn-outline" href="/cv">View CV</a>
+      <a class="btn btn-ghost" href="/contact">Contact Me</a>
     </div>
-  </div>
+    <div class="mt-5 flex flex-wrap gap-3 text-sm opacity-75">
+      <span>GitHub link pending</span>
+      <span>LinkedIn link pending</span>
+    </div>
+  </section>
 
-  <div>
-    <div class="text-3xl w-full font-bold mb-2">My last projects {"</>"}</div>
-  </div>
+  <section class="py-10">
+    <h2 class="text-3xl font-bold">What I Build</h2>
+    <div class="mt-6 grid gap-4 md:grid-cols-2">
+      {capabilities.map((item) => (
+        <article class="card bg-base-200 shadow-sm">
+          <div class="card-body">
+            <h3 class="card-title">{item.title}</h3>
+            <p>{item.description}</p>
+            <div class="mt-2 flex flex-wrap gap-2">
+              {item.tags.map((tag) => <span class="badge badge-outline">{tag}</span>)}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
 
-  <HorizontalCard
-    title="Demo Project 1"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="NEW"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Demo Project 2"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Demo Project 3"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="FOSS"
-  />
+  <section class="py-10">
+    <div class="flex flex-wrap items-end justify-between gap-3">
+      <h2 class="text-3xl font-bold">Featured Case Studies</h2>
+      <a class="link link-primary" href="/case-studies">View all case studies</a>
+    </div>
+    <div class="mt-6 grid gap-4">
+      {caseStudies.map((item) => (
+        <article class="card bg-base-200 shadow-sm">
+          <div class="card-body">
+            <div class="flex flex-wrap items-start justify-between gap-3">
+              <h3 class="card-title">{item.title}</h3>
+              <span class="badge badge-primary badge-outline">Case study coming soon</span>
+            </div>
+            <p>{item.description}</p>
+            <div class="flex flex-wrap gap-2">
+              {item.tags.map((tag) => <span class="badge badge-outline">{tag}</span>)}
+            </div>
+            <div class="card-actions justify-end">
+              <a class="btn btn-sm btn-outline" href={item.href}>Read placeholder</a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
 
-  <div>
-    <div class="text-3xl w-full font-bold mb-5 mt-10">Latest from blog</div>
-  </div>
+  <section class="py-10">
+    <div class="flex flex-wrap items-end justify-between gap-3">
+      <div>
+        <h2 class="text-3xl font-bold">PoC / Demo Preview</h2>
+        <p class="mt-2 opacity-80">v0 PoCs are placeholders or static walkthroughs, not live backend demos.</p>
+      </div>
+      <a class="link link-primary" href="/pocs">View all PoCs</a>
+    </div>
+    <div class="mt-6 grid gap-4 md:grid-cols-3">
+      {pocs.map((item) => (
+        <article class="card bg-base-200 shadow-sm">
+          <div class="card-body">
+            <span class="badge badge-primary badge-outline w-fit">Guided demo planned</span>
+            <h3 class="card-title text-lg">{item.title}</h3>
+            <p>{item.description}</p>
+            <div class="flex flex-wrap gap-2">
+              {item.tags.map((tag) => <span class="badge badge-outline">{tag}</span>)}
+            </div>
+            <div class="card-actions justify-end">
+              <a class="btn btn-sm btn-outline" href={item.href}>View PoC page</a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
 
-  {
-    last_posts.map((post) => (
-      <>
-        <HorizontalCard
-          title={post.data.title}
-          img={post.data.heroImage}
-          desc={post.data.description}
-          url={"/blog/" + createSlug(post.data.title, post.slug)}
-          target="_self"
-          badge={post.data.badge}
-        />
-        <div class="divider my-0" />
-      </>
-    ))
-  }
+  <section class="py-10">
+    <h2 class="text-3xl font-bold">Available for roles and project work</h2>
+    <p class="mt-3 max-w-3xl opacity-80">I am available for remote AI/ML engineering roles, contractor engagements, freelance PoCs, part-time implementation support, and project-based AI/backend work.</p>
+    <div class="mt-6 grid gap-4 md:grid-cols-2">
+      <article class="card bg-base-200 shadow-sm">
+        <div class="card-body">
+          <h3 class="card-title">For Hiring Teams</h3>
+          <p>Looking for an AI/ML engineer who can build production-oriented systems, not just experiments.</p>
+          <ul class="list-disc pl-5 grid gap-1">
+            <li>AI/ML Engineer</li>
+            <li>LLM/RAG Engineer</li>
+            <li>Computer Vision Engineer</li>
+            <li>AI Backend Engineer</li>
+            <li>Python Backend Engineer with ML deployment experience</li>
+          </ul>
+          <div class="card-actions justify-end"><a class="btn btn-outline" href="/cv">View CV</a></div>
+        </div>
+      </article>
+      <article class="card bg-base-200 shadow-sm">
+        <div class="card-body">
+          <h3 class="card-title">For Clients & Agencies</h3>
+          <p>Need help building AI prototypes, backend integrations, computer vision pipelines, RAG apps, or workflow automations.</p>
+          <ul class="list-disc pl-5 grid gap-1">
+            <li>RAG/document assistant prototypes</li>
+            <li>Computer vision pipelines</li>
+            <li>Async model inference APIs</li>
+            <li>AI workflow automation</li>
+            <li>n8n + LLM implementation</li>
+            <li>Backend integration for AI products</li>
+          </ul>
+          <div class="card-actions justify-end"><a class="btn btn-primary" href="/contact">Contact Me</a></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="py-10">
+    <h2 class="text-3xl font-bold">Tech Stack</h2>
+    <div class="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {stackGroups.map(([group, items]) => (
+        <article class="card bg-base-200 shadow-sm">
+          <div class="card-body">
+            <h3 class="font-bold">{group}</h3>
+            <div class="flex flex-wrap gap-2">
+              {items.map((item) => <span class="badge badge-outline">{item}</span>)}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="py-10">
+    <h2 class="text-3xl font-bold">Availability</h2>
+    <div class="mt-4 card bg-base-200 shadow-sm">
+      <div class="card-body">
+        <p>Based in Indonesia, UTC+7. Available for APAC/Europe overlap and async global teams.</p>
+        <p>Open to remote roles, contractor work, freelance projects, part-time engagements, and project-based AI/backend implementation.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-10">
+    <div class="card bg-primary text-primary-content shadow-sm">
+      <div class="card-body">
+        <h2 class="card-title text-3xl">Can I help you build this AI system?</h2>
+        <p>Start with the case study placeholders, review the PoC plans, or reach out directly with the system you want to build.</p>
+        <div class="card-actions mt-3">
+          <a class="btn" href="/contact">Contact Me</a>
+          <a class="btn btn-outline border-primary-content text-primary-content hover:bg-primary-content hover:text-primary" href="/case-studies">View Case Studies</a>
+        </div>
+      </div>
+    </div>
+  </section>
 </BaseLayout>

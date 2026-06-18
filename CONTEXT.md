@@ -6,13 +6,12 @@ This file is the handoff note for future coding sessions. Keep it current whenev
 
 ## Current State
 
-- The repository is currently a planning scaffold for Ahmad Saladin's personal website v0.
+- Astrofy is installed in this repo and a baseline build passes after removing the incompatible sitemap integration from `astro.config.mjs`.
 - Source brief exists in `brief.md`.
 - Agent instructions exist in `AGENTS.md`.
 - Reusable design guidance exists in `DESIGN.md`.
 - Detailed implementation plan exists in `IMPLEMENTATION_PLAN.md`.
-- Astrofy has not yet been installed in this repo.
-- No application source files have been created yet.
+- Astrofy source files live under `src/`, static assets under `public/`, and package scripts are in `package.json`.
 
 ## Source Of Truth
 
@@ -30,6 +29,25 @@ This file is the handoff note for future coding sessions. Keep it current whenev
 - Use placeholder case studies and PoCs for v0.
 - Do not build real backend demos, contact form backend, analytics, CMS, architecture diagrams, or custom design system work in v0.
 - Main site should be deployable to Cloudflare Pages and independent from future VPS demo/API uptime.
+- Implement v0 case studies and PoCs as static Astro pages instead of adding new content collections. This is the smallest safe fit for placeholder pages and keeps the Astrofy blog collection intact for later.
+
+## Astrofy Structure Audit
+
+- Global metadata defaults: `src/config.ts`.
+- Astro config and integrations: `astro.config.mjs`.
+- Shared page shell: `src/layouts/BaseLayout.astro`.
+- Metadata tags: `src/components/BaseHead.astro`.
+- Mobile header branding: `src/components/Header.astro`.
+- Sidebar navigation: `src/components/SideBarMenu.astro`.
+- Sidebar social/contact links: `src/components/SideBarFooter.astro`.
+- Footer copyright/template credit: `src/components/Footer.astro`.
+- Homepage: `src/pages/index.astro`.
+- Existing CV page: `src/pages/cv.astro`.
+- Existing project/service template pages: `src/pages/projects.astro` and `src/pages/services.astro`.
+- Blog routes: `src/pages/blog/` with content in `src/content/blog/`; keep support but hide from v0 navigation.
+- RSS route: `src/pages/rss.xml.js`.
+- Store routes: `src/pages/store/` with content in `src/content/store/`; remove or disable for v0.
+- Content collection schemas: `src/content/config.ts`.
 
 ## Required v0 Routes
 
@@ -89,21 +107,14 @@ Open to remote roles, contractor work, freelance projects, part-time engagements
 
 ## Current Next Steps
 
-1. Bootstrap Astrofy into this repo.
-2. Install dependencies and confirm a baseline build.
-3. Audit Astrofy's routes, layouts, navigation, content collections, and metadata conventions.
-4. Implement global configuration and v0 navigation.
-5. Build pages according to `IMPLEMENTATION_PLAN.md` and `DESIGN.md`.
+1. Implement global configuration and v0 navigation.
+2. Remove or disable Store routes and content from the v0 user journey.
+3. Build pages according to `IMPLEMENTATION_PLAN.md` and `DESIGN.md`.
 
 ## Verification Commands
 
-Commands are pending until Astrofy is installed. Expected future commands are likely:
-
-- `npm install`
-- `npm run dev`
-- `npm run build`
-
-Update this section after package scripts are known.
+- `npm run dev -- --host 127.0.0.1`: starts Astro dev server.
+- `npm run build`: passes after disabling the incompatible Astrofy sitemap integration.
 
 ## Known Blockers / Unknowns
 

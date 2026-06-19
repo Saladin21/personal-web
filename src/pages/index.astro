@@ -7,22 +7,22 @@ const description = "Remote AI/ML engineer based in Indonesia, building producti
 const capabilities = [
   {
     title: "LLM/RAG Applications",
-    description: "Document assistants, retrieval pipelines, vector search, tool-calling workflows, structured data collection, and AI app backends.",
+    description: "Document assistants, retrieval pipelines, vector search, tool-calling workflows, structured data collection, and AI app backends. Built for enterprise clients in healthcare and business automation.",
     tags: ["Python", "FastAPI", "Qdrant", "LangGraph", "RAG", "Tool Calling"],
   },
   {
     title: "Computer Vision Systems",
-    description: "Image processing, segmentation, detection, OpenCV/PyTorch pipelines, sliding-window inference, post-processing, and production inference APIs.",
+    description: "Image processing, segmentation, detection, OpenCV/PyTorch pipelines, sliding-window inference, post-processing, and production inference APIs. Deployed to both cloud APIs and mobile devices (TorchScript + JNI).",
     tags: ["PyTorch", "OpenCV", "ONNX", "Segmentation", "Detection", "Sliding-Window Inference"],
   },
   {
     title: "AI Backend & Model Serving",
-    description: "FastAPI/Flask model APIs, async job queues, Redis/RabbitMQ workers, object storage flows, callback/webhook patterns, and cloud deployment.",
+    description: "FastAPI/Flask model APIs, async job queues, Redis/RabbitMQ workers, object storage flows, callback/webhook patterns, and cloud deployment. Serving real-time healthcare workflows and long-running inference jobs.",
     tags: ["FastAPI", "Flask", "Redis", "RabbitMQ", "Docker", "AWS", "GCP", "S3/GCS"],
   },
   {
     title: "n8n + AI Automation",
-    description: "Workflow automations combining APIs, LLMs, webhooks, human approval, messaging integrations, and business process automation.",
+    description: "Workflow automations combining APIs, LLMs, webhooks, human approval, messaging integrations, and business process automation. Built for business process automation with LLM integration.",
     tags: ["n8n", "Webhooks", "LLMs", "Gmail", "Telegram", "Postgres", "Automation"],
   },
 ];
@@ -70,10 +70,11 @@ const pocs = [
 ];
 
 const stackGroups = [
-  ["AI / ML", ["PyTorch", "scikit-learn", "ONNX", "OpenCV", "embeddings", "segmentation", "detection"]],
-  ["LLM / Agents", ["RAG", "Qdrant", "LangGraph", "tool calling", "LLM APIs", "prompt workflows"]],
-  ["Backend", ["Python", "FastAPI", "Flask", "Redis", "RabbitMQ", "REST APIs", "webhooks"]],
+  ["AI / ML", ["PyTorch", "scikit-learn", "ONNX", "OpenCV", "embeddings", "segmentation", "detection", "LangChain", "LlamaIndex"]],
+  ["LLM / Agents", ["RAG", "Qdrant", "FAISS", "LangGraph", "tool calling", "OpenAI API", "Gemini API", "GPT-Realtime", "prompt workflows"]],
+  ["Backend", ["Python", "FastAPI", "Flask", "Redis", "RabbitMQ", "REST APIs", "webhooks", "async pipelines"]],
   ["Cloud / Infra", ["Docker", "AWS", "GCP", "S3/GCS", "Cloudflare Pages", "VPS deployment"]],
+  ["Languages", ["Python", "JavaScript/TypeScript", "SQL", "Kotlin", "C/C++"]],
   ["Automation", ["n8n", "Telegram", "Gmail", "Postgres", "workflow automation"]],
 ];
 ---
@@ -96,8 +97,10 @@ const stackGroups = [
       <a class="btn btn-ghost" href="/contact">Contact Me</a>
     </div>
     <div class="mt-5 flex flex-wrap gap-3 text-sm opacity-75">
-      <span>GitHub link pending</span>
-      <span>LinkedIn link pending</span>
+      <a href="https://github.com/Saladin21" target="_blank" rel="noopener noreferrer" class="link link-hover">GitHub</a>
+      <a href="https://linkedin.com/in/ahmad-saladin/" target="_blank" rel="noopener noreferrer" class="link link-hover">LinkedIn</a>
+      <a href="https://www.kaggle.com/ahmadsaladin" target="_blank" rel="noopener noreferrer" class="link link-hover">Kaggle</a>
+      <a href="mailto:ahmadsaladin21@gmail.com" class="link link-hover">Email</a>
     </div>
   </section>
 
@@ -129,14 +132,14 @@ const stackGroups = [
           <div class="card-body">
             <div class="flex flex-wrap items-start justify-between gap-3">
               <h3 class="card-title">{item.title}</h3>
-              <span class="badge badge-primary badge-outline">Case study coming soon</span>
+               <span class="badge badge-primary badge-outline">Case study</span>
             </div>
             <p>{item.description}</p>
             <div class="flex flex-wrap gap-2">
               {item.tags.map((tag) => <span class="badge badge-outline">{tag}</span>)}
             </div>
             <div class="card-actions justify-end">
-              <a class="btn btn-sm btn-outline" href={item.href}>Read placeholder</a>
+               <a class="btn btn-sm btn-outline" href={item.href}>Read case study</a>
             </div>
           </div>
         </article>
@@ -148,7 +151,7 @@ const stackGroups = [
     <div class="flex flex-wrap items-end justify-between gap-3">
       <div>
         <h2 class="text-3xl font-bold">PoC / Demo Preview</h2>
-        <p class="mt-2 opacity-80">v0 PoCs are placeholders or static walkthroughs, not live backend demos.</p>
+        <p class="mt-2 opacity-80">Guided walkthroughs showing how I approach common AI system patterns.</p>
       </div>
       <a class="link link-primary" href="/pocs">View all PoCs</a>
     </div>
@@ -156,7 +159,7 @@ const stackGroups = [
       {pocs.map((item) => (
         <article class="card bg-base-200 shadow-sm">
           <div class="card-body">
-            <span class="badge badge-primary badge-outline w-fit">Guided demo planned</span>
+            <span class="badge badge-primary badge-outline w-fit">Guided demo</span>
             <h3 class="card-title text-lg">{item.title}</h3>
             <p>{item.description}</p>
             <div class="flex flex-wrap gap-2">
@@ -237,7 +240,7 @@ const stackGroups = [
     <div class="card bg-primary text-primary-content shadow-sm">
       <div class="card-body">
         <h2 class="card-title text-3xl">Can I help you build this AI system?</h2>
-        <p>Start with the case study placeholders, review the PoC plans, or reach out directly with the system you want to build.</p>
+        <p>Start with the case studies, review the PoC walkthroughs, or reach out directly with the system you want to build.</p>
         <div class="card-actions mt-3">
           <a class="btn" href="/contact">Contact Me</a>
           <a class="btn btn-outline border-primary-content text-primary-content hover:bg-primary-content hover:text-primary" href="/case-studies">View Case Studies</a>

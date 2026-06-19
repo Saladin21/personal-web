@@ -1,25 +1,111 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
+const experience = [
+  {
+    role: "AI Engineer",
+    company: "Infidea",
+    period: "July 2024 -- Present",
+    location: "Jakarta, Indonesia",
+    highlights: [
+      "Designed and built real-time patient intake and coordination workflow for an aesthetic clinic using LiveKit, GPT-Realtime, LangChain, and OpenAI API",
+      "Built RAG system using LlamaIndex and Qdrant vector store for knowledge base, ingesting client documents/PDFs and scraping websites with Playwright",
+      "Designed, built, and managed FastAPI services for agentic applications, integrating with Calendly and Google Calendar for appointment booking",
+      "Built AI receptionist with Twilio and LiveKit for voice-based interactions with backend API integration",
+      "Built AI video short generation system using Gemini video understanding + FFmpeg for content analysis and editing",
+    ],
+  },
+  {
+    role: "Data Scientist",
+    company: "Infidea",
+    period: "July 2023 -- June 2024",
+    location: "Jakarta, Indonesia",
+    highlights: [
+      "Built and maintained asynchronous computer vision inference pipeline using Flask, RabbitMQ, PyTorch, and AWS",
+      "Developed image segmentation systems for healthcare-adjacent workflows",
+      "Deployed optimized PyTorch models to Android using TorchScript and JNI for offline inference",
+    ],
+  },
+  {
+    role: "Data Scientist Intern",
+    company: "PT Telkom Indonesia",
+    period: "Aug. 2022 -- Dec. 2022",
+    location: "Jakarta, Indonesia",
+    highlights: [
+      "Built image classification and segmentation models for applied ML use cases",
+      "Conducted hyperparameter tuning with Optuna",
+    ],
+  },
+  {
+    role: "Tenaga Ahli (Informatics)",
+    company: "Lapi Ganesha Utama",
+    period: "2026 -- Present",
+    location: "Bandung, Indonesia",
+    highlights: [
+      "Part of a consulting team for water resource management project (Perum Jasa Tirta II, state-owned enterprise)",
+      "Informatics expertise within government Grand Design project",
+    ],
+  },
+];
+
+const projects = [
+  {
+    title: "LLM Fortify",
+    tech: "Python, LangChain, Ragas",
+    year: "2024",
+    description: "Web app for evaluating OpenAI-compatible LLM endpoints. Adversarial testing, robustness evaluation, modular multi-LLM judging workflow, failure-mode assessment.",
+  },
+  {
+    title: "RAG Knowledge Base",
+    tech: "Python, FastAPI, LlamaIndex, Qdrant, Playwright",
+    year: "2026",
+    description: "RAG system for enterprise knowledge base. Document/PDF ingestion, website scraping with Playwright, vector search with Qdrant, source-grounded answer generation.",
+  },
+  {
+    title: "AI Receptionist",
+    tech: "Python, FastAPI, Twilio, LiveKit, LangChain, OpenAI API",
+    year: "2026",
+    description: "Voice-based AI receptionist for healthcare clinic. Telephony integration via Twilio, real-time voice via LiveKit, backend API for appointment booking.",
+  },
+  {
+    title: "Multi-index Query on Image Database",
+    tech: "Python, Streamlit, FAISS",
+    year: "2023",
+    description: "Semantic retrieval system with SQL-like multi-index queries over image data. CLIP + YOLO integration for structured querying over unstructured inputs.",
+  },
+  {
+    title: "Client Inference",
+    tech: "JavaScript, Transformers.js",
+    year: "2025",
+    description: "Browser-based ML inference demo running NLP and computer vision models fully client-side. Edge/client inference and deployment tradeoff exploration.",
+  },
+  {
+    title: "Voice of Customer Pipeline",
+    tech: "Python, topic modeling, sentiment analysis",
+    year: "2026",
+    description: "Data pipeline for voice of customer analysis. Scraped social media posts enriched with topic modeling and sentiment analysis for customer insights.",
+  },
+];
+
 const skillGroups = [
-  ["AI / ML", ["PyTorch", "scikit-learn", "ONNX", "OpenCV", "embeddings", "segmentation", "detection"]],
-  ["LLM / Agents", ["RAG", "Qdrant", "LangGraph", "tool calling", "LLM APIs", "prompt workflows"]],
-  ["Backend", ["Python", "FastAPI", "Flask", "Redis", "RabbitMQ", "REST APIs", "webhooks"]],
+  ["AI / ML", ["PyTorch", "scikit-learn", "ONNX", "OpenCV", "embeddings", "segmentation", "detection", "LangChain", "LlamaIndex", "RAG", "Qdrant", "FAISS", "OpenAI API", "Gemini API", "GPT-Realtime", "LangGraph", "tool calling"]],
+  ["Backend", ["Python", "FastAPI", "Flask", "Redis", "RabbitMQ", "REST APIs", "webhooks", "async pipelines"]],
+  ["Languages", ["Python", "JavaScript/TypeScript", "SQL", "Kotlin", "C/C++"]],
   ["Cloud / Infra", ["Docker", "AWS", "GCP", "S3/GCS", "Cloudflare Pages", "VPS deployment"]],
-  ["Automation", ["n8n", "Telegram", "Gmail", "Postgres", "workflow automation"]],
+  ["Automation", ["n8n", "Telegram Bot API", "Gmail API", "Postgres", "workflow automation"]],
 ];
 ---
 
 <BaseLayout
   title="CV - Ahmad Saladin"
-  description="CV summary for Ahmad Saladin, a remote AI/ML engineer focused on LLM/RAG apps, computer vision pipelines, AI backend systems, and automation."
+  description="CV for Ahmad Saladin, a remote AI/ML engineer with 3+ years building LLM/RAG apps, computer vision pipelines, AI backends, and automation workflows."
   sideBarActiveItemID="cv"
 >
   <section class="max-w-3xl">
     <p class="text-sm font-semibold uppercase tracking-[0.22em] text-primary">CV</p>
     <h1 class="mt-3 text-4xl md:text-5xl font-bold">Ahmad Saladin</h1>
     <p class="mt-4 text-xl">Remote AI/ML Engineer for production AI systems</p>
-    <p class="mt-3 opacity-80">Based in Indonesia, UTC+7. Available for APAC/Europe overlap and async global teams.</p>
+    <p class="mt-3 opacity-80">Jakarta, Indonesia, UTC+7. Available for APAC/Europe overlap and async global teams.</p>
     <div class="mt-6 flex flex-wrap gap-3">
       <span class="btn btn-disabled">CV PDF coming soon</span>
       <a class="btn btn-primary" href="/contact">Contact Me</a>
@@ -28,13 +114,65 @@ const skillGroups = [
 
   <section class="mt-10 card bg-base-200 shadow-sm">
     <div class="card-body">
-      <h2 class="card-title">Role Summary</h2>
-      <p>I help teams build LLM/RAG apps, computer vision pipelines, FastAPI model APIs, vector search systems, n8n automations, and cloud inference backends.</p>
+      <h2 class="card-title">Summary</h2>
+      <p>AI engineer and CEO with 3+ years of experience across production ML systems, LLM applications, computer vision, and cloud inference pipelines. Builds end-to-end AI systems from frontend to backend to AI/ML integration. Strong in workflow design, structured outputs, evaluation criteria, and AI-assisted implementation.</p>
     </div>
   </section>
 
   <section class="mt-10">
-    <h2 class="text-3xl font-bold">Core Skills</h2>
+    <h2 class="text-3xl font-bold">Experience</h2>
+    <div class="mt-6 grid gap-4">
+      {experience.map((job) => (
+        <article class="card bg-base-200 shadow-sm">
+          <div class="card-body">
+            <h3 class="card-title">{job.role}</h3>
+            <p class="text-sm opacity-75">{job.company} | {job.period} | {job.location}</p>
+            <ul class="list-disc pl-5 grid gap-1 mt-2">
+              {job.highlights.map((h) => <li>{h}</li>)}
+            </ul>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="mt-10">
+    <h2 class="text-3xl font-bold">Projects</h2>
+    <div class="mt-6 grid gap-4">
+      {projects.map((project) => (
+        <article class="card bg-base-200 shadow-sm">
+          <div class="card-body">
+            <h3 class="card-title">{project.title}</h3>
+            <p class="text-sm opacity-75">{project.tech} | {project.year}</p>
+            <p class="mt-1">{project.description}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="mt-10">
+    <h2 class="text-3xl font-bold">Education</h2>
+    <div class="mt-6 grid gap-4">
+      <article class="card bg-base-200 shadow-sm">
+        <div class="card-body">
+          <h3 class="card-title">University of Colorado Boulder</h3>
+          <p class="text-sm opacity-75">Boulder, CO | Jan. 2025 -- Dec. 2026 (Expected)</p>
+          <p>Master of Science in Computer Science</p>
+        </div>
+      </article>
+      <article class="card bg-base-200 shadow-sm">
+        <div class="card-body">
+          <h3 class="card-title">Institut Teknologi Bandung</h3>
+          <p class="text-sm opacity-75">Bandung, Indonesia | Aug. 2019 -- Sep. 2023</p>
+          <p>Bachelor of Science in Informatics/Computer Science | GPA: 3.87 / 4.00</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="mt-10">
+    <h2 class="text-3xl font-bold">Technical Skills</h2>
     <div class="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       {skillGroups.map(([group, skills]) => (
         <article class="card bg-base-200 shadow-sm">
@@ -49,21 +187,19 @@ const skillGroups = [
     </div>
   </section>
 
-  <section class="mt-10">
-    <h2 class="text-3xl font-bold">Selected Experience Areas</h2>
-    <div class="mt-6 grid gap-4">
-      <article class="card bg-base-200 shadow-sm"><div class="card-body"><h3 class="card-title">LLM/RAG Engineering</h3><p>Retrieval pipelines, vector search, tool-calling workflows, structured outputs, and AI app backend integration.</p></div></article>
-      <article class="card bg-base-200 shadow-sm"><div class="card-body"><h3 class="card-title">Computer Vision Engineering</h3><p>Image processing, segmentation, detection, model inference, post-processing, and deployment-oriented API design.</p></div></article>
-      <article class="card bg-base-200 shadow-sm"><div class="card-body"><h3 class="card-title">AI Backend Engineering</h3><p>FastAPI/Flask model APIs, queue workers, object storage flows, status tracking, callbacks, and cloud deployment patterns.</p></div></article>
+  <section class="mt-10 card bg-base-200 shadow-sm">
+    <div class="card-body">
+      <h2 class="card-title">Certifications & Achievements</h2>
+      <p><strong>Kaggle Competition Expert</strong> -- Rank 3215 / 200,000 (top 1.6%)</p>
     </div>
   </section>
 
   <section class="mt-10">
     <h2 class="text-3xl font-bold">Relevant Case Studies</h2>
     <div class="mt-6 grid gap-4 md:grid-cols-3">
-      <a class="card bg-base-200 shadow-sm hover:bg-base-300" href="/case-studies/llm-rag-assistant"><div class="card-body"><h3 class="font-bold">LLM/RAG Assistant</h3><p>Case study coming soon</p></div></a>
-      <a class="card bg-base-200 shadow-sm hover:bg-base-300" href="/case-studies/computer-vision-segmentation"><div class="card-body"><h3 class="font-bold">CV Segmentation</h3><p>Case study coming soon</p></div></a>
-      <a class="card bg-base-200 shadow-sm hover:bg-base-300" href="/case-studies/async-ai-inference-backend"><div class="card-body"><h3 class="font-bold">Async Inference Backend</h3><p>Case study coming soon</p></div></a>
+      <a class="card bg-base-200 shadow-sm hover:bg-base-300" href="/case-studies/llm-rag-assistant"><div class="card-body"><h3 class="font-bold">LLM/RAG Assistant</h3><p>Enterprise RAG with tool calling for healthcare workflows.</p></div></a>
+      <a class="card bg-base-200 shadow-sm hover:bg-base-300" href="/case-studies/computer-vision-segmentation"><div class="card-body"><h3 class="font-bold">CV Segmentation</h3><p>Async inference pipeline with cloud and mobile deployment.</p></div></a>
+      <a class="card bg-base-200 shadow-sm hover:bg-base-300" href="/case-studies/async-ai-inference-backend"><div class="card-body"><h3 class="font-bold">Async Inference Backend</h3><p>Reusable async inference pattern across multiple AI projects.</p></div></a>
     </div>
   </section>
 

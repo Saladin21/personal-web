@@ -4,29 +4,35 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
 <BaseLayout
   title="LLM/RAG Assistant with Tool Calling - Ahmad Saladin"
-  description="Placeholder case study for an LLM/RAG assistant with retrieval, tool calling, structured information collection, and backend integration."
+  description="Case study for an LLM/RAG assistant with retrieval, tool calling, structured information collection, and backend integration built for enterprise healthcare workflows."
   sideBarActiveItemID="case-studies"
 >
   <article class="prose max-w-3xl">
-    <p class="not-prose text-sm font-semibold uppercase tracking-[0.22em] text-primary">Case study coming soon</p>
+    <p class="not-prose text-sm font-semibold uppercase tracking-[0.22em] text-primary">Case Study</p>
     <h1>LLM/RAG Assistant with Tool Calling</h1>
-    <h2>Summary</h2>
-    <p>This case study will cover an AI assistant workflow with retrieval, tool calling, structured information collection, and backend integration.</p>
-    <h2>What This Will Cover</h2>
+
+    <h2>Problem</h2>
+    <p>An enterprise client needed a document assistant that could retrieve relevant knowledge from ingested PDFs and websites, answer questions with source grounding, and collect structured information via tool calling. The system had to handle real-time client-facing interactions with reliability and low latency in healthcare workflows.</p>
+
+    <h2>Approach</h2>
+    <p>Built a RAG pipeline using LlamaIndex for document ingestion and retrieval, Qdrant for vector search, and LangChain for orchestration. Implemented tool calling for structured data collection including appointment booking and information intake. Ingested client documents and PDFs, and scraped client websites with Playwright for knowledge base population.</p>
+
+    <h2>Key Decisions</h2>
     <ul>
-      <li>Problem</li>
-      <li>Ahmad's role</li>
-      <li>Solution architecture</li>
-      <li>Tech stack</li>
-      <li>Key challenges</li>
-      <li>Result or practical outcome</li>
-      <li>Screenshots/demo assets</li>
-      <li>What would be improved next</li>
+      <li>Chose Qdrant over FAISS for production-ready vector search with filtering</li>
+      <li>Used Playwright for web scraping to handle JS-rendered client pages</li>
+      <li>Implemented structured output schemas for tool calling to ensure reliable data collection</li>
     </ul>
+
     <h2>Tech Stack</h2>
-    <p>LLM APIs, RAG, Qdrant, LangGraph, FastAPI, Python, tool calling, structured outputs.</p>
-    <h2>Status</h2>
-    <p>Full case study coming soon.</p>
+    <p>Python, FastAPI, Qdrant, LangChain, LlamaIndex, OpenAI API, Playwright, tool calling.</p>
+
+    <h2>Outcome</h2>
+    <p>Production system handling customer-facing healthcare workflows where latency, reliability, and maintainability mattered.</p>
+
+    <h2>Role</h2>
+    <p>Sole engineer on the RAG and tool-calling components.</p>
+
     <h2>CTA</h2>
     <p>Interested in building something similar? <a href="/contact">Contact me</a>.</p>
   </article>

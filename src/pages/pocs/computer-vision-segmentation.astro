@@ -4,26 +4,42 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
 <BaseLayout
   title="Computer Vision Segmentation Demo - Ahmad Saladin"
-  description="Placeholder PoC page for a computer vision segmentation walkthrough covering image input, mask output, overlays, post-processing, and deployment considerations."
+  description="Guided walkthrough of image segmentation with mask generation, overlays, post-processing, and deployment considerations."
   sideBarActiveItemID="pocs"
 >
   <article class="prose max-w-3xl">
-    <p class="not-prose text-sm font-semibold uppercase tracking-[0.22em] text-primary">Guided demo planned</p>
+    <p class="not-prose text-sm font-semibold uppercase tracking-[0.22em] text-primary">Guided Demo</p>
     <h1>Computer Vision Segmentation Demo</h1>
-    <h2>What It Does</h2>
-    <p>This PoC will provide a visual walkthrough of image input, segmentation mask, overlay result, post-processing, and deployment considerations.</p>
+
+    <h2>What It Demonstrates</h2>
+    <p>A visual walkthrough of image input, segmentation mask generation, overlay result, post-processing steps, and deployment considerations for production CV pipelines.</p>
+
     <h2>Who It Is For</h2>
     <p>Teams building medical, beauty, industrial, or inspection-related image analysis workflows.</p>
-    <h2>Demo Status</h2>
-    <p>For v0, this is a placeholder or static walkthrough. It is not a live backend demo yet.</p>
+
+    <h2>Demo Flow</h2>
+    <ol>
+      <li>Upload or select a sample image</li>
+      <li>Run segmentation model (browser-based or API)</li>
+      <li>Display original image, predicted mask, and overlay</li>
+      <li>Show post-processing steps (morphological operations, contour extraction)</li>
+      <li>Deployment considerations (ONNX export, mobile optimization, API design)</li>
+    </ol>
+
     <h2>Architecture</h2>
     <p>User -> Frontend -> API -> Preprocessing -> Model inference -> Post-processing -> Mask and overlay result</p>
+
     <h2>Tech Stack</h2>
     <p>OpenCV, PyTorch, ONNX, segmentation, Python, FastAPI, object storage.</p>
-    <h2>Limitations</h2>
-    <p>The v0 version does not upload images, run model inference, generate masks, or depend on a VPS/GPU backend.</p>
-    <h2>Productionization Plan</h2>
-    <p>Production work would add auth, monitoring, retries, error handling, rate limits, model evaluation, scaling, and cost controls.</p>
+
+    <h2>Productionization Notes</h2>
+    <ul>
+      <li><strong>Sliding-window inference:</strong> Handling images larger than model input resolution</li>
+      <li><strong>Post-processing:</strong> Morphological operations and contour extraction for mask refinement</li>
+      <li><strong>Mobile deployment:</strong> TorchScript + JNI to avoid on-device Python runtime</li>
+      <li><strong>Production concerns:</strong> Auth, monitoring, retries, error handling, rate limits, model evaluation, scaling</li>
+    </ul>
+
     <h2>CTA</h2>
     <p>Want to build something like this? <a href="/contact">Contact me</a>.</p>
   </article>

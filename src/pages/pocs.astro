@@ -28,14 +28,13 @@ const pocs = [
 
 <BaseLayout
   title="PoCs - Ahmad Saladin"
-  description="Placeholder AI proof-of-concept walkthroughs for RAG, computer vision, and async inference API patterns."
+  description="AI proof-of-concept walkthroughs for RAG, computer vision, and async inference API patterns by Ahmad Saladin."
   sideBarActiveItemID="pocs"
 >
   <section class="max-w-3xl">
     <p class="text-sm font-semibold uppercase tracking-[0.22em] text-primary">PoCs</p>
     <h1 class="mt-3 text-4xl md:text-5xl font-bold">AI system demos and walkthroughs</h1>
-    <p class="mt-4 text-lg opacity-80">PoCs are small demos and walkthroughs that show how I would approach common AI system patterns. Some start as guided frontend-only demos with sample data. Real backend demos may later be hosted separately on demo subdomains.</p>
-    <p class="mt-3 opacity-80">For v0, these are placeholders or static walkthroughs, not live backend demos.</p>
+    <p class="mt-4 text-lg opacity-80">PoCs are guided walkthroughs that show how I approach common AI system patterns. Each demonstrates architecture decisions, tech stack tradeoffs, and productionization considerations.</p>
   </section>
 
   <section class="mt-10 grid gap-4">
@@ -44,7 +43,7 @@ const pocs = [
         <div class="card-body">
           <div class="flex flex-wrap items-start justify-between gap-3">
             <h2 class="card-title">{poc.title}</h2>
-            <span class="badge badge-primary badge-outline">Guided demo planned</span>
+            <span class="badge badge-primary badge-outline">Guided demo</span>
           </div>
           <p><strong>What it demonstrates:</strong> {poc.demonstrates}</p>
           <p><strong>Useful for:</strong> {poc.usefulFor}</p>

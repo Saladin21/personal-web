@@ -4,29 +4,35 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
 <BaseLayout
   title="Async AI Inference Backend - Ahmad Saladin"
-  description="Placeholder case study for long-running AI jobs using API endpoints, queues, workers, storage, status tracking, and callbacks."
+  description="Case study for a backend architecture handling long-running AI jobs with API endpoints, queue workers, object storage, status tracking, and webhook callbacks."
   sideBarActiveItemID="case-studies"
 >
   <article class="prose max-w-3xl">
-    <p class="not-prose text-sm font-semibold uppercase tracking-[0.22em] text-primary">Case study coming soon</p>
+    <p class="not-prose text-sm font-semibold uppercase tracking-[0.22em] text-primary">Case Study</p>
     <h1>Async AI Inference Backend</h1>
-    <h2>Summary</h2>
-    <p>This case study will cover a backend architecture for long-running AI jobs using API endpoints, queue workers, object storage, status tracking, and callback/webhook delivery.</p>
-    <h2>What This Will Cover</h2>
+
+    <h2>Problem</h2>
+    <p>A client needed a backend architecture for long-running AI jobs that could accept API requests, queue work for background processing, store results, track status, and deliver results via callbacks and webhooks.</p>
+
+    <h2>Approach</h2>
+    <p>Designed an async job processing architecture with FastAPI endpoints for job submission, RabbitMQ/Redis for queuing, worker processes for inference, object storage (S3/GCS) for result persistence, and webhook callbacks for result delivery. Implemented status tracking and error handling throughout the pipeline.</p>
+
+    <h2>Key Decisions</h2>
     <ul>
-      <li>Problem</li>
-      <li>Ahmad's role</li>
-      <li>Solution architecture</li>
-      <li>Tech stack</li>
-      <li>Key challenges</li>
-      <li>Result or practical outcome</li>
-      <li>Screenshots/demo assets</li>
-      <li>What would be improved next</li>
+      <li>Decoupled submission from processing via queue for scalability</li>
+      <li>Object storage for results to avoid database bloat from large inference outputs</li>
+      <li>Webhook callbacks for real-time result delivery to integrating systems</li>
     </ul>
+
     <h2>Tech Stack</h2>
-    <p>FastAPI, Flask, Redis, RabbitMQ, Docker, AWS, GCP, S3/GCS, REST APIs, webhooks.</p>
-    <h2>Status</h2>
-    <p>Full case study coming soon.</p>
+    <p>Python, FastAPI, Flask, Redis, RabbitMQ, Docker, AWS, GCP, S3/GCS, webhooks.</p>
+
+    <h2>Outcome</h2>
+    <p>Reusable async inference pattern deployed across multiple AI projects at Infidea.</p>
+
+    <h2>Role</h2>
+    <p>Designed and built the full architecture.</p>
+
     <h2>CTA</h2>
     <p>Interested in building something similar? <a href="/contact">Contact me</a>.</p>
   </article>

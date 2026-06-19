@@ -4,26 +4,42 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
 <BaseLayout
   title="RAG Document Assistant Demo - Ahmad Saladin"
-  description="Placeholder PoC page for a RAG document assistant demo using sample documents, retrieved context, source-grounded answers, and productionization notes."
+  description="Guided walkthrough of a RAG document assistant with sample documents, retrieved context, source-grounded answers, and productionization notes."
   sideBarActiveItemID="pocs"
 >
   <article class="prose max-w-3xl">
-    <p class="not-prose text-sm font-semibold uppercase tracking-[0.22em] text-primary">Guided demo planned</p>
+    <p class="not-prose text-sm font-semibold uppercase tracking-[0.22em] text-primary">Guided Demo</p>
     <h1>RAG Document Assistant Demo</h1>
-    <h2>What It Does</h2>
-    <p>This PoC will show a document assistant flow with sample document selection, retrieved context, source-grounded answer, and productionization notes.</p>
+
+    <h2>What It Demonstrates</h2>
+    <p>A document assistant flow with sample document selection, retrieved context, source-grounded answer generation, and productionization notes. This walkthrough covers the key architecture decisions behind building a production RAG system.</p>
+
     <h2>Who It Is For</h2>
     <p>Startups, internal teams, and agencies building document Q&A, knowledge base assistants, or retrieval-backed LLM apps.</p>
-    <h2>Demo Status</h2>
-    <p>For v0, this is a placeholder or static walkthrough. It is not a live backend demo yet.</p>
+
+    <h2>Demo Flow</h2>
+    <ol>
+      <li>User selects a sample document (PDF or web page)</li>
+      <li>Document is chunked and embedded into Qdrant</li>
+      <li>User asks a question</li>
+      <li>System retrieves relevant chunks and generates a source-grounded answer</li>
+      <li>Display answer with source citations</li>
+    </ol>
+
     <h2>Architecture</h2>
     <p>User -> Frontend -> API -> Retriever -> Vector Store -> LLM -> Source-grounded answer</p>
+
     <h2>Tech Stack</h2>
     <p>RAG, vector search, Qdrant, FastAPI, Python, LLM APIs, embeddings.</p>
-    <h2>Limitations</h2>
-    <p>The v0 version does not upload documents, call an LLM, query a vector database, or depend on a hosted model/API.</p>
-    <h2>Productionization Plan</h2>
-    <p>Production work would add auth, monitoring, retries, error handling, rate limits, retrieval evaluation, scaling, and cost controls.</p>
+
+    <h2>Productionization Notes</h2>
+    <ul>
+      <li><strong>Chunking strategy:</strong> Chunk size, overlap, and metadata choices affect retrieval quality</li>
+      <li><strong>Embedding model:</strong> Tradeoffs between speed, cost, and retrieval accuracy</li>
+      <li><strong>Vector store:</strong> Qdrant vs FAISS vs managed vector DB for different scale requirements</li>
+      <li><strong>Production concerns:</strong> Authentication, rate limiting, error handling, monitoring, retries, cost controls</li>
+    </ul>
+
     <h2>CTA</h2>
     <p>Want to build something like this? <a href="/contact">Contact me</a>.</p>
   </article>

@@ -4,26 +4,43 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
 <BaseLayout
   title="Async AI Inference API Demo - Ahmad Saladin"
-  description="Placeholder PoC page for an async AI inference API flow with job submission, queue workers, storage, status checks, and callbacks."
+  description="Guided walkthrough of an async AI inference workflow with job submission, queue workers, storage, status checks, and webhook callbacks."
   sideBarActiveItemID="pocs"
 >
   <article class="prose max-w-3xl">
-    <p class="not-prose text-sm font-semibold uppercase tracking-[0.22em] text-primary">Guided demo planned</p>
+    <p class="not-prose text-sm font-semibold uppercase tracking-[0.22em] text-primary">Guided Demo</p>
     <h1>Async AI Inference API Demo</h1>
-    <h2>What It Does</h2>
-    <p>This PoC will simulate a long-running AI inference workflow: submit job, queue, process, store result, check status, and receive callback.</p>
+
+    <h2>What It Demonstrates</h2>
+    <p>A simulated long-running AI inference workflow: submit job, queue, process, store result, check status, and receive callback. Shows the architecture pattern behind production async inference backends.</p>
+
     <h2>Who It Is For</h2>
     <p>Teams building model-serving APIs, image processing systems, batch inference, or AI backends.</p>
-    <h2>Demo Status</h2>
-    <p>For v0, this is a placeholder or static walkthrough. It is not a live backend demo yet.</p>
+
+    <h2>Demo Flow</h2>
+    <ol>
+      <li>Submit a job via API form (upload input or provide parameters)</li>
+      <li>Job enters queue, status changes to "processing"</li>
+      <li>Worker processes the job (simulated or real inference)</li>
+      <li>Result stored, status changes to "completed"</li>
+      <li>User checks status endpoint or receives webhook callback</li>
+      <li>Display result with timing information</li>
+    </ol>
+
     <h2>Architecture</h2>
     <p>User -> Frontend -> API -> Queue -> Worker -> Storage -> Status / Callback</p>
+
     <h2>Tech Stack</h2>
     <p>FastAPI, queue workers, Redis, RabbitMQ, object storage, Docker, webhooks.</p>
-    <h2>Limitations</h2>
-    <p>The v0 version does not submit real jobs, run workers, store generated outputs, or depend on any hosted queue/API service.</p>
-    <h2>Productionization Plan</h2>
-    <p>Production work would add auth, monitoring, retries, error handling, rate limits, job evaluation, scaling, and cost controls.</p>
+
+    <h2>Productionization Notes</h2>
+    <ul>
+      <li><strong>Queue design:</strong> Decoupling submission from processing for scalability</li>
+      <li><strong>Result storage:</strong> Object storage (S3/GCS) to avoid database bloat from large inference outputs</li>
+      <li><strong>Callbacks:</strong> Webhook delivery for real-time result notification to integrating systems</li>
+      <li><strong>Production concerns:</strong> Auth, monitoring, retries, error handling, rate limits, job evaluation, scaling, cost controls</li>
+    </ul>
+
     <h2>CTA</h2>
     <p>Want to build something like this? <a href="/contact">Contact me</a>.</p>
   </article>

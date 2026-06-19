@@ -4,29 +4,35 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
 <BaseLayout
   title="Computer Vision Segmentation Pipeline - Ahmad Saladin"
-  description="Placeholder case study for a production-oriented image segmentation workflow with preprocessing, inference, post-processing, and deployment considerations."
+  description="Case study for a production image segmentation pipeline with Flask API, RabbitMQ queue, PyTorch inference, and mobile deployment via TorchScript and JNI."
   sideBarActiveItemID="case-studies"
 >
   <article class="prose max-w-3xl">
-    <p class="not-prose text-sm font-semibold uppercase tracking-[0.22em] text-primary">Case study coming soon</p>
+    <p class="not-prose text-sm font-semibold uppercase tracking-[0.22em] text-primary">Case Study</p>
     <h1>Computer Vision Segmentation Pipeline</h1>
-    <h2>Summary</h2>
-    <p>This case study will cover a production-oriented image segmentation workflow with preprocessing, sliding-window inference, post-processing, API/mobile deployment considerations, and visualization outputs.</p>
-    <h2>What This Will Cover</h2>
+
+    <h2>Problem</h2>
+    <p>A healthcare-adjacent client needed automated image segmentation for clinical workflow support, with both cloud API access and offline mobile deployment. The system had to handle variable inference load and large images exceeding model input resolution.</p>
+
+    <h2>Approach</h2>
+    <p>Built an asynchronous inference pipeline using Flask for the API layer, RabbitMQ for job queuing, and PyTorch for model inference. Developed sliding-window inference for large image processing, post-processing for mask refinement, and visualization outputs. Deployed optimized models to Android using TorchScript and JNI for offline inference.</p>
+
+    <h2>Key Decisions</h2>
     <ul>
-      <li>Problem</li>
-      <li>Ahmad's role</li>
-      <li>Solution architecture</li>
-      <li>Tech stack</li>
-      <li>Key challenges</li>
-      <li>Result or practical outcome</li>
-      <li>Screenshots/demo assets</li>
-      <li>What would be improved next</li>
+      <li>Used async queue architecture to handle variable inference load without blocking</li>
+      <li>TorchScript + JNI for mobile deployment to avoid on-device Python runtime</li>
+      <li>Sliding-window approach to handle images larger than model input resolution</li>
     </ul>
+
     <h2>Tech Stack</h2>
-    <p>PyTorch, OpenCV, ONNX, Python, segmentation, detection, sliding-window inference, FastAPI deployment.</p>
-    <h2>Status</h2>
-    <p>Full case study coming soon.</p>
+    <p>Python, Flask, PyTorch, RabbitMQ, AWS, OpenCV, ONNX, TorchScript, JNI.</p>
+
+    <h2>Outcome</h2>
+    <p>Production pipeline serving a healthcare-adjacent workflow with both cloud and mobile deployment paths.</p>
+
+    <h2>Role</h2>
+    <p>Built and maintained the full pipeline (API, queue, inference, deployment).</p>
+
     <h2>CTA</h2>
     <p>Interested in building something similar? <a href="/contact">Contact me</a>.</p>
   </article>

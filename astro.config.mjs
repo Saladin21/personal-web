@@ -5,5 +5,8 @@ import tailwind from "@astrojs/tailwind";
 // https://astro.build/config
 export default defineConfig({
   site: 'https://ahmadsaladin.com',
+  redirects: {
+    '/blog': '/',
+  },
   integrations: [mdx(), tailwind()]
 });

@@ -48,27 +48,6 @@ const caseStudies = [
   },
 ];
 
-const pocs = [
-  {
-    title: "RAG Document Assistant Demo",
-    description: "A document assistant flow with sample document selection, retrieved context, source-grounded answer, and productionization notes.",
-    href: "/pocs/rag-document-assistant",
-    tags: ["RAG", "Vector Search", "Qdrant", "LLM", "FastAPI"],
-  },
-  {
-    title: "Computer Vision Segmentation Demo",
-    description: "A visual walkthrough of image input, segmentation mask, overlay result, post-processing, and deployment considerations.",
-    href: "/pocs/computer-vision-segmentation",
-    tags: ["Computer Vision", "OpenCV", "PyTorch", "Segmentation", "ONNX"],
-  },
-  {
-    title: "Async AI Inference API Demo",
-    description: "A simulated long-running AI inference workflow: submit job, queue, process, store result, check status, and receive callback.",
-    href: "/pocs/async-ai-inference-api",
-    tags: ["FastAPI", "Queue", "Worker", "Redis", "RabbitMQ", "Storage", "Callback"],
-  },
-];
-
 const stackGroups = [
   ["AI / ML", ["PyTorch", "scikit-learn", "ONNX", "OpenCV", "embeddings", "segmentation", "detection", "LangChain", "LlamaIndex"]],
   ["LLM / Agents", ["RAG", "Qdrant", "FAISS", "LangGraph", "tool calling", "OpenAI API", "Gemini API", "GPT-Realtime", "prompt workflows"]],
@@ -92,7 +71,6 @@ const stackGroups = [
     </div>
     <div class="mt-8 flex flex-wrap gap-3">
       <a class="btn btn-primary" href="/case-studies">View Case Studies</a>
-      <a class="btn btn-outline" href="/pocs">View PoCs</a>
       <a class="btn btn-outline" href="/cv">View CV</a>
       <a class="btn btn-ghost" href="/contact">Contact Me</a>
     </div>
@@ -147,32 +125,7 @@ const stackGroups = [
     </div>
   </section>
 
-  <section class="py-10">
-    <div class="flex flex-wrap items-end justify-between gap-3">
-      <div>
-        <h2 class="text-3xl font-bold">PoC / Demo Preview</h2>
-        <p class="mt-2 opacity-80">Guided walkthroughs showing how I approach common AI system patterns.</p>
-      </div>
-      <a class="link link-primary" href="/pocs">View all PoCs</a>
-    </div>
-    <div class="mt-6 grid gap-4 md:grid-cols-3">
-      {pocs.map((item) => (
-        <article class="card bg-base-200 shadow-sm">
-          <div class="card-body">
-            <span class="badge badge-primary badge-outline w-fit">Guided demo</span>
-            <h3 class="card-title text-lg">{item.title}</h3>
-            <p>{item.description}</p>
-            <div class="flex flex-wrap gap-2">
-              {item.tags.map((tag) => <span class="badge badge-outline">{tag}</span>)}
-            </div>
-            <div class="card-actions justify-end">
-              <a class="btn btn-sm btn-outline" href={item.href}>View PoC page</a>
-            </div>
-          </div>
-        </article>
-      ))}
-    </div>
-  </section>
+
 
   <section class="py-10">
     <h2 class="text-3xl font-bold">Available for roles and project work</h2>
@@ -240,7 +193,7 @@ const stackGroups = [
     <div class="card bg-primary text-primary-content shadow-sm">
       <div class="card-body">
         <h2 class="card-title text-3xl">Can I help you build this AI system?</h2>
-        <p>Start with the case studies, review the PoC walkthroughs, or reach out directly with the system you want to build.</p>
+        <p>Start with the case studies or reach out directly with the system you want to build.</p>
         <div class="card-actions mt-3">
           <a class="btn" href="/contact">Contact Me</a>
           <a class="btn btn-outline border-primary-content text-primary-content hover:bg-primary-content hover:text-primary" href="/case-studies">View Case Studies</a>

@@ -11,29 +11,39 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     <p class="not-prose text-sm font-semibold uppercase tracking-[0.22em] text-primary">Case Study</p>
     <h1>LLM/RAG Assistant with Tool Calling</h1>
 
-    <h2>Problem</h2>
-    <p>An enterprise client needed a document assistant that could retrieve relevant knowledge from ingested PDFs and websites, answer questions with source grounding, and collect structured information via tool calling. The system had to handle real-time client-facing interactions with reliability and low latency in healthcare workflows.</p>
+    <p class="not-prose opacity-80">Based on production systems built at Infidea.</p>
+
+    <h2>Summary</h2>
+    <p>Built a production RAG system for an aesthetic clinic's patient intake workflow at Infidea. Combined LlamaIndex document ingestion, Qdrant vector search, LangGraph orchestration with tool calling for appointment booking and structured data collection, and LiveKit/GPT-Realtime for voice-based patient interactions. The system had to handle real-time client-facing conversations with low latency and reliable structured outputs.</p>
+
+    <h2>What This Page Covers</h2>
+    <ul>
+      <li>How the RAG pipeline handles document ingestion and retrieval across multiple source types</li>
+      <li>Why tool calling was needed and how it was integrated into the LangGraph workflow</li>
+      <li>Architecture decisions for reliability in a healthcare-adjacent, client-facing context</li>
+    </ul>
 
     <h2>Approach</h2>
-    <p>Built a RAG pipeline using LlamaIndex for document ingestion and retrieval, Qdrant for vector search, and LangChain for orchestration. Implemented tool calling for structured data collection including appointment booking and information intake. Ingested client documents and PDFs, and scraped client websites with Playwright for knowledge base population.</p>
+    <p>The system was built in three layers: ingestion, retrieval, and orchestration. For ingestion, I used LlamaIndex to chunk and embed client documents and PDFs, and Playwright to scrape client websites with JavaScript-rendered content. Qdrant handled vector storage with metadata filtering for document source and type. The orchestration layer used LangGraph to manage the conversation flow, with structured tool calling for appointment booking (Calendly/Google Calendar integration) and information intake forms.</p>
+    <p>Voice-based interactions used LiveKit for real-time WebRTC audio and GPT-Realtime for streaming speech-to-speech responses. FastAPI served as the backend, connecting the RAG pipeline, tool calls, and voice infrastructure.</p>
 
     <h2>Key Decisions</h2>
     <ul>
-      <li>Chose Qdrant over FAISS for production-ready vector search with filtering</li>
-      <li>Used Playwright for web scraping to handle JS-rendered client pages</li>
-      <li>Implemented structured output schemas for tool calling to ensure reliable data collection</li>
+      <li><strong>Qdrant over FAISS</strong> — production-ready filtering, easy horizontal scaling, and better integration with LlamaIndex</li>
+      <li><strong>Playwright for scraping</strong> — many client websites use JS-rendered content that plain HTTP requests miss</li>
+      <li><strong>LangGraph over raw LangChain</strong> — explicit state management and branching logic for tool calling workflows</li>
+      <li><strong>Structured output schemas</strong> — tool definitions with strict schemas to ensure reliable data collection from the LLM</li>
     </ul>
 
     <h2>Tech Stack</h2>
-    <p>Python, FastAPI, Qdrant, LangChain, LlamaIndex, OpenAI API, Playwright, tool calling.</p>
+    <p>Python, FastAPI, Qdrant, LlamaIndex, LangGraph, LangChain, OpenAI API, Playwright, LiveKit, GPT-Realtime, tool calling.</p>
 
     <h2>Outcome</h2>
-    <p>Production system handling customer-facing healthcare workflows where latency, reliability, and maintainability mattered.</p>
+    <p>Production system running patient intake and coordination workflows for aesthetic clinic operations. Handles voice interactions, document-grounded Q&A, and structured appointment booking in a single pipeline.</p>
 
-    <h2>Role</h2>
-    <p>Sole engineer on the RAG and tool-calling components.</p>
+    <h2>Need something like this?</h2>
+    <p>If you are building a RAG system, document assistant, or tool-calling LLM workflow, <a href="/contact">contact me</a> to discuss the architecture.</p>
 
-    <h2>CTA</h2>
-    <p>Interested in building something similar? <a href="/contact">Contact me</a>.</p>
+    <p class="not-prose mt-6"><a class="btn btn-outline" href="/case-studies">View all case studies</a></p>
   </article>
 </BaseLayout>

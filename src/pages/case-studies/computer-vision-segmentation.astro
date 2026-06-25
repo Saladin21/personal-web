@@ -11,29 +11,39 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     <p class="not-prose text-sm font-semibold uppercase tracking-[0.22em] text-primary">Case Study</p>
     <h1>Computer Vision Segmentation Pipeline</h1>
 
-    <h2>Problem</h2>
-    <p>A healthcare-adjacent client needed automated image segmentation for clinical workflow support, with both cloud API access and offline mobile deployment. The system had to handle variable inference load and large images exceeding model input resolution.</p>
+    <p class="not-prose opacity-80">Based on production systems built at Infidea.</p>
+
+    <h2>Summary</h2>
+    <p>Built and maintained an asynchronous image segmentation pipeline at Infidea for healthcare-adjacent clinical workflows. The system handled large images exceeding model input resolution via sliding-window inference, queued jobs through RabbitMQ, ran PyTorch model inference, and deployed optimized models to Android using TorchScript and JNI for offline inference. Served both cloud API and mobile deployment paths.</p>
+
+    <h2>What This Page Covers</h2>
+    <ul>
+      <li>How the async pipeline handles variable inference load without blocking</li>
+      <li>Sliding-window and post-processing techniques for large medical images</li>
+      <li>Why TorchScript + JNI was chosen for mobile deployment over other approaches</li>
+    </ul>
 
     <h2>Approach</h2>
-    <p>Built an asynchronous inference pipeline using Flask for the API layer, RabbitMQ for job queuing, and PyTorch for model inference. Developed sliding-window inference for large image processing, post-processing for mask refinement, and visualization outputs. Deployed optimized models to Android using TorchScript and JNI for offline inference.</p>
+    <p>The pipeline used Flask for the API layer, RabbitMQ for job queuing, and PyTorch for model inference. Images are received via the API, queued, and processed by worker processes. For images larger than the model's input resolution, I implemented sliding-window inference that tiles the image, runs inference on overlapping patches, and stitches the results. Post-processing includes morphological operations and contour extraction for mask refinement.</p>
+    <p>For mobile deployment, I exported trained PyTorch models to TorchScript and integrated them into Android via JNI. This avoided requiring an on-device Python runtime while keeping inference performance close to native PyTorch.</p>
 
     <h2>Key Decisions</h2>
     <ul>
-      <li>Used async queue architecture to handle variable inference load without blocking</li>
-      <li>TorchScript + JNI for mobile deployment to avoid on-device Python runtime</li>
-      <li>Sliding-window approach to handle images larger than model input resolution</li>
+      <li><strong>Async queue architecture</strong> — decouples API requests from inference processing, handles variable load without request timeouts</li>
+      <li><strong>Sliding-window inference</strong> — handles clinical images that far exceed model input resolution without losing spatial detail</li>
+      <li><strong>TorchScript + JNI for mobile</strong> — eliminates on-device Python dependency while maintaining inference speed</li>
+      <li><strong>ONNX export option</strong> — provides a deployment path for non-PyTorch environments and edge devices</li>
     </ul>
 
     <h2>Tech Stack</h2>
-    <p>Python, Flask, PyTorch, RabbitMQ, AWS, OpenCV, ONNX, TorchScript, JNI.</p>
+    <p>Python, Flask, PyTorch, OpenCV, ONNX, RabbitMQ, AWS, TorchScript, JNI.</p>
 
     <h2>Outcome</h2>
-    <p>Production pipeline serving a healthcare-adjacent workflow with both cloud and mobile deployment paths.</p>
+    <p>Production pipeline serving healthcare-adjacent segmentation workflows with both cloud API access and offline mobile deployment. Reused across multiple image analysis projects at Infidea.</p>
 
-    <h2>Role</h2>
-    <p>Built and maintained the full pipeline (API, queue, inference, deployment).</p>
+    <h2>Need something like this?</h2>
+    <p>If you are building a computer vision pipeline, segmentation system, or need model deployment to cloud and mobile, <a href="/contact">contact me</a> to discuss the architecture.</p>
 
-    <h2>CTA</h2>
-    <p>Interested in building something similar? <a href="/contact">Contact me</a>.</p>
+    <p class="not-prose mt-6"><a class="btn btn-outline" href="/case-studies">View all case studies</a></p>
   </article>
 </BaseLayout>

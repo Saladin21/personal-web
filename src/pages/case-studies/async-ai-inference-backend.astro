@@ -11,29 +11,39 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     <p class="not-prose text-sm font-semibold uppercase tracking-[0.22em] text-primary">Case Study</p>
     <h1>Async AI Inference Backend</h1>
 
-    <h2>Problem</h2>
-    <p>A client needed a backend architecture for long-running AI jobs that could accept API requests, queue work for background processing, store results, track status, and deliver results via callbacks and webhooks.</p>
+    <p class="not-prose opacity-80">Based on production systems built at Infidea.</p>
+
+    <h2>Summary</h2>
+    <p>Designed and built an async job processing architecture at Infidea for long-running AI inference tasks. The system accepts API requests, queues work for background processing via Redis and RabbitMQ, runs inference in worker processes, stores results in object storage (S3/GCS), tracks job status, and delivers results through webhook callbacks. This pattern was reused across multiple AI projects at Infidea.</p>
+
+    <h2>What This Page Covers</h2>
+    <ul>
+      <li>How the async architecture decouples request submission from processing</li>
+      <li>Why object storage was chosen over databases for inference outputs</li>
+      <li>How webhook callbacks integrate with downstream systems</li>
+    </ul>
 
     <h2>Approach</h2>
-    <p>Designed an async job processing architecture with FastAPI endpoints for job submission, RabbitMQ/Redis for queuing, worker processes for inference, object storage (S3/GCS) for result persistence, and webhook callbacks for result delivery. Implemented status tracking and error handling throughout the pipeline.</p>
+    <p>The architecture uses FastAPI for the API layer with endpoints for job submission, status checking, and result retrieval. When a job is submitted, it enters a Redis queue and is picked up by worker processes (managed via RabbitMQ for reliability). Workers run the actual inference, store results to S3 or GCS, and update the job status. Integrating systems receive webhook callbacks when jobs complete.</p>
+    <p>FastAPI serves the submission and status endpoints. Flask is used for worker processes and internal tooling. Docker containers handle deployment across AWS and GCP, with the same architecture adapting to both clouds.</p>
 
     <h2>Key Decisions</h2>
     <ul>
-      <li>Decoupled submission from processing via queue for scalability</li>
-      <li>Object storage for results to avoid database bloat from large inference outputs</li>
-      <li>Webhook callbacks for real-time result delivery to integrating systems</li>
+      <li><strong>Queue-based decoupling</strong> — submission endpoints stay fast regardless of inference duration; workers scale independently</li>
+      <li><strong>Object storage for results</strong> — inference outputs (images, large JSON, model artifacts) bloat databases; S3/GCS handles them cleanly</li>
+      <li><strong>Webhook callbacks</strong> — real-time result delivery to integrating systems without polling</li>
+      <li><strong>Multi-cloud support</strong> — same architecture deploys to both AWS and GCP with S3/GCS swap</li>
     </ul>
 
     <h2>Tech Stack</h2>
     <p>Python, FastAPI, Flask, Redis, RabbitMQ, Docker, AWS, GCP, S3/GCS, webhooks.</p>
 
     <h2>Outcome</h2>
-    <p>Reusable async inference pattern deployed across multiple AI projects at Infidea.</p>
+    <p>Reusable async inference pattern deployed across multiple AI projects at Infidea. Each project reuses the queue, storage, and callback infrastructure while swapping only the worker inference logic.</p>
 
-    <h2>Role</h2>
-    <p>Designed and built the full architecture.</p>
+    <h2>Need something like this?</h2>
+    <p>If you are building a model-serving API, async inference backend, or AI job processing system, <a href="/contact">contact me</a> to discuss the architecture.</p>
 
-    <h2>CTA</h2>
-    <p>Interested in building something similar? <a href="/contact">Contact me</a>.</p>
+    <p class="not-prose mt-6"><a class="btn btn-outline" href="/case-studies">View all case studies</a></p>
   </article>
 </BaseLayout>
